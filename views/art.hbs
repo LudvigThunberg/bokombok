@@ -1,0 +1,26 @@
+<div class="art-body">
+    <h2>Art</h2>
+
+    <form action="/art/create" method="post" enctype="multipart/form-data">
+        <label for="image">Ladda upp fil</label>
+        <input type="file" name="image" id="image">
+        <label for="imageName">Bildtext:</label>
+        <input type="text" name="imageName" id="imageName">
+        <input type="submit" value="Spara">
+    </form>
+
+    <div class="all-images-container">
+        {{#each arts}}
+
+        <div class="image-container">
+            <img src="{{artImage}}">
+            {{#if imageName}}
+            <p>{{imageName}}</p>
+            {{/if}}
+            <form action="/art/{{_id}}/delete" method="post">
+                <input type="submit" value="Delete">
+            </form>
+        </div>
+        {{/each}}
+    </div>
+</div>

@@ -7,6 +7,8 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 
+const artRouter = require("./routers/artRouter.js");
+
 const app = express();
 
 // ==== CONFIG ====
@@ -32,8 +34,12 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-// === 404 ===
+// === ROUTERS ===
+app.use("/art", artRouter);
 
+// Auth middleware
+
+// === 404 ===
 app.use("/", (req, res) => {
   res.sendStatus(404);
 });
