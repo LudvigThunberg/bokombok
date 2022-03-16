@@ -1,4 +1,10 @@
 <nav>
     <a href="/">Home</a>
     <a href="/art">Art</a>
+    <a href="/graphicDesign">Grapic Design</a>
 </nav>
+{{#if loggedIn}}
+<form action="/user/logout" method="post">
+    <input type="submit" value="Logout">
+</form>
+{{/if}}

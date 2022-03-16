@@ -1,7 +1,7 @@
 <div class="art-body">
-    <h2>Art</h2>
+    <h2>Graphic Design</h2>
     {{#if loggedIn}}
-    <form action="/art/create" method="post" enctype="multipart/form-data">
+    <form action="/graphicDesign/create" method="post" enctype="multipart/form-data">
         <label for="image">Ladda upp fil</label>
         <input type="file" name="image" id="image">
         <label for="imageName">Bildtext:</label>
@@ -10,7 +10,7 @@
     </form>
     {{/if}}
     <div class="all-images-container">
-        {{#each arts}}
+        {{#each graphicDesigns}}
 
         <div class="image-container">
             <img src="{{artImage}}">
@@ -18,7 +18,7 @@
             <p>{{imageName}}</p>
             {{/if}}
             {{#if ../loggedIn}}
-            <form action="/art/{{_id}}/delete" method="post">
+            <form action="/graphicDesign/{{_id}}/delete" method="post">
                 <input type="submit" value="Delete">
             </form>
             {{/if}}

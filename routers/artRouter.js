@@ -31,7 +31,7 @@ artRouter.post("/create", async (req, res) => {
 
 //Read
 artRouter.get("/", async (req, res) => {
-  const arts = await ArtModel.find().lean();
+  const arts = await (await ArtModel.find().lean()).reverse();
 
   res.render("art", { arts });
 });
