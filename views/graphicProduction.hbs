@@ -1,0 +1,28 @@
+<div class="art-body">
+    <h2>Graphic Production</h2>
+    {{#if loggedIn}}
+    <form action="/graphicProduction/create" method="post" enctype="multipart/form-data">
+        <label for="image">Ladda upp fil</label>
+        <input type="file" name="image" id="image">
+        <label for="imageName">Bildtext:</label>
+        <input type="text" name="imageName" id="imageName">
+        <input type="submit" value="Spara">
+    </form>
+    {{/if}}
+    <div class="all-images-container">
+        {{#each graphicProductions}}
+
+        <div class="image-container">
+            <img src="{{artImage}}">
+            {{#if imageName}}
+            <p>{{imageName}}</p>
+            {{/if}}
+            {{#if ../loggedIn}}
+            <form action="/graphicProduction/{{_id}}/delete" method="post">
+                <input type="submit" value="Delete">
+            </form>
+            {{/if}}
+        </div>
+        {{/each}}
+    </div>
+</div>

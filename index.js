@@ -10,6 +10,7 @@ const fileUpload = require("express-fileupload");
 const artRouter = require("./routers/artRouter.js");
 const userRouter = require("./routers/userRouter.js");
 const graphicDesignRouter = require("./routers/graphicDesignRouter.js");
+const graphicProductionRouter = require("./routers/graphicProductionRouter.js");
 
 const app = express();
 
@@ -56,6 +57,7 @@ app.use((req, res, next) => {
 app.use("/art", artRouter);
 app.use("/user", userRouter);
 app.use("/graphicDesign", graphicDesignRouter);
+app.use("/graphicProduction", graphicProductionRouter);
 
 // === 404 ===
 app.use("/", (req, res) => {
