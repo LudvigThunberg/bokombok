@@ -40,7 +40,7 @@ artRouter.get("/", async (req, res) => {
 artRouter.post("/:id/delete", async (req, res) => {
   try {
     const id = req.params.id;
-    //Remove File
+    //Remove Image File
     ArtModel.findOne({ _id: id }, (err, image) => {
       const path = __dirname + "/../public" + image.artImage;
       fs.unlinkSync(path);

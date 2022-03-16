@@ -8,7 +8,9 @@
         <input type="text" name="imageName" id="imageName">
         <input type="submit" value="Spara">
     </form>
-
+    {{#if loggedIn}}
+    <p>Du är inloggad</p>
+    {{/if}}
     <div class="all-images-container">
         {{#each arts}}
 

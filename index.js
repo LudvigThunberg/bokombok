@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 
 const artRouter = require("./routers/artRouter.js");
+const userRouter = require("./routers/userRouter.js");
 
 const app = express();
 
@@ -34,10 +35,25 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
+// Auth middleware
+app.use((req, res, next) => {
+  const { token } = req.cookies;
+
+  if (token && jwt.verify(token, process.env.JWT_SECRET)) {
+    const tokenData = jwt.decode(token, process.env.JWT_SECRET);
+    res.locals.loggedIn = true;
+    res.locals.username = tokenData.username;
+    res.locals.id = tokenData._id;
+  } else {
+    res.locals.loggedIn = false;
+  }
+
+  next();
+});
+
 // === ROUTERS ===
 app.use("/art", artRouter);
-
-// Auth middleware
+app.use("/user", userRouter);
 
 // === 404 ===
 app.use("/", (req, res) => {
